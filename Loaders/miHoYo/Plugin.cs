@@ -80,7 +80,13 @@ namespace Loader
                 ["honkai-impact-3.8"]          = "Honkai Impact 3.8",
                 ["honkai-impact-4"]            = "Honkai Impact 4.3 - 4.5",
                 ["genshin-impact-1.1"]         = "Genshin Impact 1.1",
-                ["genshin-impact-1.2"]         = "Genshin Impact 1.2"
+                ["genshin-impact-1.2"]         = "Genshin Impact 1.2",
+                ["genshin-impact-2.1"]         = "Genshin Impact 2.1",
+                ["genshin-impact-2.2"]         = "Genshin Impact 2.2",
+                ["genshin-impact-2.3"]         = "Genshin Impact 2.3",
+                ["genshin-impact-2.4"]         = "Genshin Impact 2.4",
+                ["genshin-impact-2.5"]         = "Genshin Impact 2.5",
+                ["genshin-impact-2.6"]         = "Genshin Impact 2.6"
             }
         };
 
@@ -101,7 +107,13 @@ namespace Loader
             ["honkai-impact-3.8"]          = new UnityOffsets { DecryptMetadata = 0x02B2A0, GetStringFromIndex = 0x031B00, GetStringLiteralFromIndex = 0x0353A0 },
             ["honkai-impact-4"]            = new UnityOffsets { DecryptMetadata = 0x042110, GetStringFromIndex = 0x029660, GetStringLiteralFromIndex = 0x02CFA0 },
             ["genshin-impact-1.1"]         = new UnityOffsets { DecryptMetadata = 0x1A7010, GetStringFromIndex = 0x12ECA0, GetStringLiteralFromIndex = 0x12EEE0 },
-            ["genshin-impact-1.2"]         = new UnityOffsets { DecryptMetadata = 0x1A7B60, GetStringFromIndex = 0x12F620, GetStringLiteralFromIndex = 0x12F860 }
+            ["genshin-impact-1.2"]         = new UnityOffsets { DecryptMetadata = 0x1A7B60, GetStringFromIndex = 0x12F620, GetStringLiteralFromIndex = 0x12F860 },
+            ["genshin-impact-2.1"]         = new UnityOffsets { DecryptMetadata = 0x1A3EE0, GetStringFromIndex = 0x12BED0, GetStringLiteralFromIndex = 0x12C130 },
+            ["genshin-impact-2.2"]         = new UnityOffsets { DecryptMetadata = 0x1658C0, GetStringFromIndex = 0x123F80, GetStringLiteralFromIndex = 0x124120 },
+            ["genshin-impact-2.3"]         = new UnityOffsets { DecryptMetadata = 0x1673A0, GetStringFromIndex = 0x125220, GetStringLiteralFromIndex = 0x125530 },
+            ["genshin-impact-2.4"]         = new UnityOffsets { DecryptMetadata = 0x16F840, GetStringFromIndex = 0x12DC50, GetStringLiteralFromIndex = 0x12DF60 },
+            ["genshin-impact-2.5"]         = new UnityOffsets { DecryptMetadata = 0x1C4DF0, GetStringFromIndex = 0x14C2D0, GetStringLiteralFromIndex = 0x14C6C0 },
+            ["genshin-impact-2.6"]         = new UnityOffsets { DecryptMetadata = 0x175060, GetStringFromIndex = 0x132B10, GetStringLiteralFromIndex = 0x132E00 }
         };
 
         // Handle to the loaded DLL
