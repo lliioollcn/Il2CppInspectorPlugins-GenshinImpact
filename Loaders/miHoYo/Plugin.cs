@@ -97,7 +97,9 @@ namespace Loader
                 ["genshin-impact-2.6.53"]      = "Genshin Impact 2.6.53 Beta",
                 ["genshin-impact-2.6.54"]      = "Genshin Impact 2.6.54 Beta",
                 ["genshin-impact-2.7"]         = "Genshin Impact 2.7",
-                ["genshin-impact-2.7.50"]      = "Genshin Impact 2.7.50 Beta"
+                ["genshin-impact-2.7.50"]      = "Genshin Impact 2.7.50 Beta",
+                ["genshin-impact-2.7.51"]      = "Genshin Impact 2.7.51 Beta",
+                ["genshin-impact-2.7.52"]      = "Genshin Impact 2.7.52 Beta"
             }
         };
 
@@ -135,7 +137,9 @@ namespace Loader
             ["genshin-impact-2.6.53"]      = new UnityOffsets { DecryptMetadata = 0x179E60, GetStringFromIndex = 0x137F80, GetStringLiteralFromIndex = 0x138260 },
             ["genshin-impact-2.6.54"]      = new UnityOffsets { DecryptMetadata = 0x179E60, GetStringFromIndex = 0x137F80, GetStringLiteralFromIndex = 0x138260 },
             ["genshin-impact-2.7"]         = new UnityOffsets { DecryptMetadata = 0x179E80, GetStringFromIndex = 0x137F60, GetStringLiteralFromIndex = 0x138240 },
-            ["genshin-impact-2.7.50"]      = new UnityOffsets { DecryptMetadata = 0x17A780, GetStringFromIndex = 0x1385B0, GetStringLiteralFromIndex = 0x1388B0 }
+            ["genshin-impact-2.7.50"]      = new UnityOffsets { DecryptMetadata = 0x17A780, GetStringFromIndex = 0x1385B0, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.7.51"]      = new UnityOffsets { DecryptMetadata = 0x17A710, GetStringFromIndex = 0x1385F0, GetStringLiteralFromIndex = 0x138910 },
+            ["genshin-impact-2.7.52"]      = new UnityOffsets { DecryptMetadata = 0x17AE80, GetStringFromIndex = 0x138530, GetStringLiteralFromIndex = 0x138870 }
         };
 
         // Handle to the loaded DLL
