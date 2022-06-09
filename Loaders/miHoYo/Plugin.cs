@@ -101,7 +101,7 @@ namespace Loader
                 ["genshin-impact-2.7.51"]      = "Genshin Impact 2.7.51 Beta",
                 ["genshin-impact-2.7.52"]      = "Genshin Impact 2.7.52 Beta",
                 ["genshin-impact-2.7.53"]      = "Genshin Impact 2.7.53 Beta",
-                ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta
+                ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta"
             }
         };
 
