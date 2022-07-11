@@ -79,6 +79,7 @@ namespace Loader
             Choices = new Dictionary<string, string> {
                 ["honkai-impact-3.8"]          = "Honkai Impact 3.8",
                 ["honkai-impact-4"]            = "Honkai Impact 4.3 - 4.5",
+                ["honkai-impact-5.8"]          = "Honkai Impact 5.8",
                 ["genshin-impact-1.1"]         = "Genshin Impact 1.1",
                 ["genshin-impact-1.2"]         = "Genshin Impact 1.2",
                 ["genshin-impact-2.0"]         = "Genshin Impact 2.0",
@@ -101,12 +102,24 @@ namespace Loader
                 ["genshin-impact-2.7.51"]      = "Genshin Impact 2.7.51 Beta",
                 ["genshin-impact-2.7.52"]      = "Genshin Impact 2.7.52 Beta",
                 ["genshin-impact-2.7.53"]      = "Genshin Impact 2.7.53 Beta",
-                ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta"
+                ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta",
+                ["genshin-impact-2.8"]         = "Genshin Impact 2.8"
+                //["genshin-impact-2.8.50"] = "Genshin Impact 2.8.50 Beta"
+                //["star-rail-beta"]             = "Star Rail Beta"
             }
         };
 
+        private PluginOptionFilePath translationPath = new PluginOptionFilePath
+        {
+            Name = "translation-file-path",
+            Description = "nameTranslation file",
+            Required = false,
+            MustExist = false,
+            AllowedExtensions = new Dictionary<string, string> { ["txt"] = "txt files"}
+        };
+
         // Make the options available to Il2CppInspector
-        public List<IPluginOption> Options => new List<IPluginOption> { game, unityPath };
+        public List<IPluginOption> Options => new List<IPluginOption> { game, unityPath, translationPath };
 
         // Unity function offsets
         private class UnityOffsets
@@ -121,6 +134,7 @@ namespace Loader
         private Dictionary<string, UnityOffsets> Offsets = new Dictionary<string, UnityOffsets> {
             ["honkai-impact-3.8"]          = new UnityOffsets { DecryptMetadata = 0x02B2A0, GetStringFromIndex = 0x031B00, GetStringLiteralFromIndex = 0x0353A0 },
             ["honkai-impact-4"]            = new UnityOffsets { DecryptMetadata = 0x042110, GetStringFromIndex = 0x029660, GetStringLiteralFromIndex = 0x02CFA0 },
+            ["honkai-impact-5.8"]          = new UnityOffsets { DecryptMetadata = 0x0C9C10, GetStringFromIndex = 0xC7FBF0, GetStringLiteralFromIndex = 0xC7FC00 },
             ["genshin-impact-1.1"]         = new UnityOffsets { DecryptMetadata = 0x1A7010, GetStringFromIndex = 0x12ECA0, GetStringLiteralFromIndex = 0x12EEE0 },
             ["genshin-impact-1.2"]         = new UnityOffsets { DecryptMetadata = 0x1A7B60, GetStringFromIndex = 0x12F620, GetStringLiteralFromIndex = 0x12F860 },
             ["genshin-impact-2.0"]         = new UnityOffsets { DecryptMetadata = 0x1A5550, GetStringFromIndex = 0x12C8B0, GetStringLiteralFromIndex = 0x12CAF0 },
@@ -143,7 +157,10 @@ namespace Loader
             ["genshin-impact-2.7.51"]      = new UnityOffsets { DecryptMetadata = 0x17A710, GetStringFromIndex = 0x1385F0, GetStringLiteralFromIndex = 0x138910 },
             ["genshin-impact-2.7.52"]      = new UnityOffsets { DecryptMetadata = 0x17AE80, GetStringFromIndex = 0x138530, GetStringLiteralFromIndex = 0x138870 },
             ["genshin-impact-2.7.53"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.7.54"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 }
+            ["genshin-impact-2.7.54"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.8"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 }
+            //["genshin-impact-2.8.50"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 }
+            //["star-rail-beta"]             = new UnityOffsets { DecryptMetadata = 0xB597F0, GetStringFromIndex = 0xB59810, GetStringLiteralFromIndex = 0xB59800 }
         };
 
         // Handle to the loaded DLL
@@ -216,7 +233,7 @@ namespace Loader
 
             // Genshin Impact adds some spice by encrypting 0x10 bytes for every 'step' bytes of the metadata
             // with a simple XOR key, so we need to apply that too
-            if (game.Value.StartsWith("genshin-impact")) {
+            if (game.Value.StartsWith("genshin-impact") || game.Value.StartsWith("star-rail")) {
                 var key = new byte [] { 0xAD, 0x2F, 0x42, 0x30, 0x67, 0x04, 0xB0, 0x9C, 0x9D, 0x2A, 0xC0, 0xBA, 0x0E, 0xBF, 0xA5, 0x68 };
 
                 // The step is based on the file size
@@ -285,9 +302,39 @@ namespace Loader
             var pGetStringFromIndex = (GetStringFromIndex)
                 Marshal.GetDelegateForFunctionPointer(ModuleBase + Offsets[game.Value].GetStringFromIndex, typeof(GetStringFromIndex));
 
+            Dictionary<string, string> nameMapping = null;
+            if (File.Exists(translationPath.Value))
+            {
+                PluginServices.For(this).StatusUpdate("Loading Translations");
+                string[] nameTranslations = File.ReadAllLines(translationPath.Value);
+                nameMapping = new Dictionary<string, string>();
+                foreach (var line in nameTranslations)
+                {
+                    var split = line.Split("⇨", StringSplitOptions.RemoveEmptyEntries);
+                    if (split.Length < 2)
+                        continue;
+
+                    nameMapping[split[0]] = split[1];
+                    //nameMapping[split[0]] = split[1].Replace("/", "::").Replace(".", "::");
+                }
+                PluginServices.For(this).StatusUpdate(String.Format("Loaded {0} Translations", nameMapping.Count));
+
+            }
+
+            if (nameMapping != null)
+                PluginServices.For(this).StatusUpdate("Applying Translations");
+
             // For each index, call the delegate with the decrypted metadata byte array and index as arguments
             foreach (var index in stringIndexes)
-                data.Strings.Add(index, Marshal.PtrToStringAnsi(pGetStringFromIndex(metadataBlob, (uint) index)));
+            {
+                string name = Marshal.PtrToStringAnsi(pGetStringFromIndex(metadataBlob, (uint)index));
+                if (nameMapping != null && nameMapping.ContainsKey(name))
+                {
+                    string replace = nameMapping[name];
+                    name = replace;
+                }
+                data.Strings.Add(index, name);
+            }
 
             // This tells Il2CppInspector we have handled the strings and not to attempt to read them itself
             // The strings will be copied from data.Strings to metadata.Strings automatically
@@ -347,12 +394,19 @@ namespace Loader
             // For each index, call the delegate with the decrypted metadata byte array, index and a pointer as arguments
             // In this case, the function returns an array of UTF8-encoded characters,
             // and populates 'length' with the number of bytes returned
-            for (uint index = 0; index < stringLiteralCount; index++) {
-                var decryptedBytesUnmanaged = pGetStringLiteralFromIndex(metadataBlob, index, ref length);
-                var str = new byte[length];
-                Marshal.Copy(decryptedBytesUnmanaged, str, 0, length);
+            File.Create("StringDump.txt").Close();
+            using (StreamWriter writer = File.AppendText("StringDump.txt"))
+            {
+                for (uint index = 0; index < stringLiteralCount; index++)
+                {
+                    var decryptedBytesUnmanaged = pGetStringLiteralFromIndex(metadataBlob, index, ref length);
+                    var str = new byte[length];
+                    Marshal.Copy(decryptedBytesUnmanaged, str, 0, length);
 
-                stringLiterals.Add(Encoding.UTF8.GetString(str));
+                    string _str = Encoding.UTF8.GetString(str);
+                    stringLiterals.Add(_str);
+                    writer.WriteLine(_str);
+                }
             }
 
             // If we had used IGetStringLiterals above, we would have set data.StringLiterals,
