@@ -103,8 +103,8 @@ namespace Loader
                 ["genshin-impact-2.7.52"]      = "Genshin Impact 2.7.52 Beta",
                 ["genshin-impact-2.7.53"]      = "Genshin Impact 2.7.53 Beta",
                 ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta",
-                ["genshin-impact-2.8"]         = "Genshin Impact 2.8"
-                //["genshin-impact-2.8.50"] = "Genshin Impact 2.8.50 Beta"
+                ["genshin-impact-2.8"]         = "Genshin Impact 2.8",
+                ["genshin-impact-2.8.50"]      = "Genshin Impact 2.8.50 Beta"
                 //["star-rail-beta"]             = "Star Rail Beta"
             }
         };
@@ -158,8 +158,8 @@ namespace Loader
             ["genshin-impact-2.7.52"]      = new UnityOffsets { DecryptMetadata = 0x17AE80, GetStringFromIndex = 0x138530, GetStringLiteralFromIndex = 0x138870 },
             ["genshin-impact-2.7.53"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
             ["genshin-impact-2.7.54"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.8"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 }
-            //["genshin-impact-2.8.50"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 }
+            ["genshin-impact-2.8"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.8.50"]      = new UnityOffsets { DecryptMetadata = 0x1783F0, GetStringFromIndex = 0x136500, GetStringLiteralFromIndex = 0x136840 }
             //["star-rail-beta"]             = new UnityOffsets { DecryptMetadata = 0xB597F0, GetStringFromIndex = 0xB59810, GetStringLiteralFromIndex = 0xB59800 }
         };
 
@@ -242,8 +242,16 @@ namespace Loader
                 for (var pos = 0; pos < metadataBlob.Length; pos += step)
                     for (var b = 0; b < 0x10; b++)
                         metadataBlob[pos + b] ^= key[b];
-            }
+            } else if (game.Value.StartsWith("honkai-impact")) {
+                var key = new byte[] { 0x3f, 0x73, 0xa8, 0x5a, 0x08, 0x32, 0x0a, 0x33, 0x3c, 0xfa, 0xa3, 0x4e, 0x8b, 0x0c, 0x77, 0x45 };
 
+                // The step is based on the file size
+                var step = (int)(stream.Length >> 14) << 6;
+
+                for (var pos = 0; pos < metadataBlob.Length; pos += step)
+                    for (var b = 0; b < 0x10; b++)
+                        metadataBlob[pos + b] ^= key[b];
+            }
             // We replace the loaded global-metadata.dat with the newly decrypted version,
             // allowing Il2CppInspector to analyze it as normal
             stream.Write(0, metadataBlob);
