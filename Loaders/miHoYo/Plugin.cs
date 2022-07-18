@@ -104,7 +104,8 @@ namespace Loader
                 ["genshin-impact-2.7.53"]      = "Genshin Impact 2.7.53 Beta",
                 ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta",
                 ["genshin-impact-2.8"]         = "Genshin Impact 2.8",
-                ["genshin-impact-2.8.50"]      = "Genshin Impact 2.8.50 Beta"
+                ["genshin-impact-2.8.50"]      = "Genshin Impact 2.8.50 Beta",
+                ["genshin-impact-2.8.51"]      = "Genshin Impact 2.8.51 Beta"
                 //["star-rail-beta"]             = "Star Rail Beta"
             }
         };
@@ -159,7 +160,8 @@ namespace Loader
             ["genshin-impact-2.7.53"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
             ["genshin-impact-2.7.54"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
             ["genshin-impact-2.8"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.8.50"]      = new UnityOffsets { DecryptMetadata = 0x1783F0, GetStringFromIndex = 0x136500, GetStringLiteralFromIndex = 0x136840 }
+            ["genshin-impact-2.8.50"]      = new UnityOffsets { DecryptMetadata = 0x1783F0, GetStringFromIndex = 0x136500, GetStringLiteralFromIndex = 0x136840 },
+            ["genshin-impact-2.8.51"]      = new UnityOffsets { DecryptMetadata = 0x179320, GetStringFromIndex = 0x137210, GetStringLiteralFromIndex = 0x137510 }
             //["star-rail-beta"]             = new UnityOffsets { DecryptMetadata = 0xB597F0, GetStringFromIndex = 0xB59810, GetStringLiteralFromIndex = 0xB59800 }
         };
 
