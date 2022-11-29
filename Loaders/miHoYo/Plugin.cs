@@ -1,8 +1,8 @@
-﻿/*
-    Copyright 2020-2021 Katy Coe - http://www.djkaty.com - https://github.com/djkaty
+/*
+   Copyright 2020-2021 Katy Coe - http://www.djkaty.com - https://github.com/djkaty
 
-    FOR EDUCATIONAL PURPOSES ONLY
-    All rights reserved.
+   FOR EDUCATIONAL PURPOSES ONLY
+   All rights reserved.
 */
 
 /*
@@ -60,7 +60,8 @@ namespace Loader
         // Options
 
         // We'll need the file path to the corresponding UnityPlayer.dll (actually Honkai Impact 3.8 and 4.3 seem to be interchangeable)
-        private PluginOptionFilePath unityPath = new PluginOptionFilePath {
+        private PluginOptionFilePath unityPath = new PluginOptionFilePath
+        {
             Name = "unity-player-path",
             Description = "Path to selected UnityPlayer.dll version\n\n"
                         + "NOTE: UnityPlayer.dll from the PC release of the game is required even if you are inspecting a mobile version\n\n"
@@ -71,42 +72,44 @@ namespace Loader
             AllowedExtensions = new Dictionary<string, string> { ["dll"] = "DLL files" }
         };
 
-        private PluginOptionChoice<string> game = new PluginOptionChoice<string> {
+        private PluginOptionChoice<string> game = new PluginOptionChoice<string>
+        {
             Name = "game",
             Description = "UnityPlayer.dll version to use for decryption",
             Required = true,
             Value = "honkai-impact-3.8",
-            Choices = new Dictionary<string, string> {
-                ["honkai-impact-3.8"]          = "Honkai Impact 3.8",
-                ["honkai-impact-4"]            = "Honkai Impact 4.3 - 4.5",
-                ["honkai-impact-5.8"]          = "Honkai Impact 5.8",
-                ["genshin-impact-1.1"]         = "Genshin Impact 1.1",
-                ["genshin-impact-1.2"]         = "Genshin Impact 1.2",
-                ["genshin-impact-2.0"]         = "Genshin Impact 2.0",
-                ["genshin-impact-2.1"]         = "Genshin Impact 2.1",
-                ["genshin-impact-2.2"]         = "Genshin Impact 2.2",
-                ["genshin-impact-2.3"]         = "Genshin Impact 2.3",
-                ["genshin-impact-2.4"]         = "Genshin Impact 2.4",
-                ["genshin-impact-2.4.50"]      = "Genshin Impact 2.4.50 Beta",
-                ["genshin-impact-2.5"]         = "Genshin Impact 2.5",
-                ["genshin-impact-2.5.50"]      = "Genshin Impact 2.5.50 Beta",
-                ["genshin-impact-2.5.52"]      = "Genshin Impact 2.5.52 Beta",
-                ["genshin-impact-2.6"]         = "Genshin Impact 2.6",
-                ["genshin-impact-2.6.50"]      = "Genshin Impact 2.6.50 Beta",
-                ["genshin-impact-2.6.51"]      = "Genshin Impact 2.6.51 Beta",
-                ["genshin-impact-2.6.52"]      = "Genshin Impact 2.6.52 Beta",
-                ["genshin-impact-2.6.53"]      = "Genshin Impact 2.6.53 Beta",
-                ["genshin-impact-2.6.54"]      = "Genshin Impact 2.6.54 Beta",
-                ["genshin-impact-2.7"]         = "Genshin Impact 2.7",
-                ["genshin-impact-2.7.50"]      = "Genshin Impact 2.7.50 Beta",
-                ["genshin-impact-2.7.51"]      = "Genshin Impact 2.7.51 Beta",
-                ["genshin-impact-2.7.52"]      = "Genshin Impact 2.7.52 Beta",
-                ["genshin-impact-2.7.53"]      = "Genshin Impact 2.7.53 Beta",
-                ["genshin-impact-2.7.54"]      = "Genshin Impact 2.7.54 Beta",
-                ["genshin-impact-2.8"]         = "Genshin Impact 2.8",
-                ["genshin-impact-2.8.50"]      = "Genshin Impact 2.8.50 Beta",
-                ["genshin-impact-2.8.51"]      = "Genshin Impact 2.8.51 Beta",
-                ["genshin-impact-2.8.52"]      = "Genshin Impact 2.8.52 Beta"
+            Choices = new Dictionary<string, string>
+            {
+                ["honkai-impact-3.8"] = "Honkai Impact 3.8",
+                ["honkai-impact-4"] = "Honkai Impact 4.3 - 4.5",
+                ["honkai-impact-5.8"] = "Honkai Impact 5.8",
+                ["genshin-impact-1.1"] = "Genshin Impact 1.1",
+                ["genshin-impact-1.2"] = "Genshin Impact 1.2",
+                ["genshin-impact-2.0"] = "Genshin Impact 2.0",
+                ["genshin-impact-2.1"] = "Genshin Impact 2.1",
+                ["genshin-impact-2.2"] = "Genshin Impact 2.2",
+                ["genshin-impact-2.3"] = "Genshin Impact 2.3",
+                ["genshin-impact-2.4"] = "Genshin Impact 2.4",
+                ["genshin-impact-2.4.50"] = "Genshin Impact 2.4.50 Beta",
+                ["genshin-impact-2.5"] = "Genshin Impact 2.5",
+                ["genshin-impact-2.5.50"] = "Genshin Impact 2.5.50 Beta",
+                ["genshin-impact-2.5.52"] = "Genshin Impact 2.5.52 Beta",
+                ["genshin-impact-2.6"] = "Genshin Impact 2.6",
+                ["genshin-impact-2.6.50"] = "Genshin Impact 2.6.50 Beta",
+                ["genshin-impact-2.6.51"] = "Genshin Impact 2.6.51 Beta",
+                ["genshin-impact-2.6.52"] = "Genshin Impact 2.6.52 Beta",
+                ["genshin-impact-2.6.53"] = "Genshin Impact 2.6.53 Beta",
+                ["genshin-impact-2.6.54"] = "Genshin Impact 2.6.54 Beta",
+                ["genshin-impact-2.7"] = "Genshin Impact 2.7",
+                ["genshin-impact-2.7.50"] = "Genshin Impact 2.7.50 Beta",
+                ["genshin-impact-2.7.51"] = "Genshin Impact 2.7.51 Beta",
+                ["genshin-impact-2.7.52"] = "Genshin Impact 2.7.52 Beta",
+                ["genshin-impact-2.7.53"] = "Genshin Impact 2.7.53 Beta",
+                ["genshin-impact-2.7.54"] = "Genshin Impact 2.7.54 Beta",
+                ["genshin-impact-2.8"] = "Genshin Impact 2.8",
+                ["genshin-impact-2.8.50"] = "Genshin Impact 2.8.50 Beta",
+                ["genshin-impact-2.8.51"] = "Genshin Impact 2.8.51 Beta",
+                ["genshin-impact-2.8.52"] = "Genshin Impact 2.8.52 Beta"
                 //["star-rail-beta"]             = "Star Rail Beta"
             }
         };
@@ -117,7 +120,7 @@ namespace Loader
             Description = "nameTranslation file",
             Required = false,
             MustExist = false,
-            AllowedExtensions = new Dictionary<string, string> { ["txt"] = "txt files"}
+            AllowedExtensions = new Dictionary<string, string> { ["txt"] = "txt files" }
         };
 
         // Make the options available to Il2CppInspector
@@ -133,37 +136,38 @@ namespace Loader
 
         // These are the offsets to various functions in each product's UnityPlayer.dll
         // You have to find these by reverse-engineering the code yourself
-        private Dictionary<string, UnityOffsets> Offsets = new Dictionary<string, UnityOffsets> {
-            ["honkai-impact-3.8"]          = new UnityOffsets { DecryptMetadata = 0x02B2A0, GetStringFromIndex = 0x031B00, GetStringLiteralFromIndex = 0x0353A0 },
-            ["honkai-impact-4"]            = new UnityOffsets { DecryptMetadata = 0x042110, GetStringFromIndex = 0x029660, GetStringLiteralFromIndex = 0x02CFA0 },
-            ["honkai-impact-5.8"]          = new UnityOffsets { DecryptMetadata = 0x0C9C10, GetStringFromIndex = 0xC7FBF0, GetStringLiteralFromIndex = 0xC7FC00 },
-            ["genshin-impact-1.1"]         = new UnityOffsets { DecryptMetadata = 0x1A7010, GetStringFromIndex = 0x12ECA0, GetStringLiteralFromIndex = 0x12EEE0 },
-            ["genshin-impact-1.2"]         = new UnityOffsets { DecryptMetadata = 0x1A7B60, GetStringFromIndex = 0x12F620, GetStringLiteralFromIndex = 0x12F860 },
-            ["genshin-impact-2.0"]         = new UnityOffsets { DecryptMetadata = 0x1A5550, GetStringFromIndex = 0x12C8B0, GetStringLiteralFromIndex = 0x12CAF0 },
-            ["genshin-impact-2.1"]         = new UnityOffsets { DecryptMetadata = 0x1A3EE0, GetStringFromIndex = 0x12BED0, GetStringLiteralFromIndex = 0x12C130 },
-            ["genshin-impact-2.2"]         = new UnityOffsets { DecryptMetadata = 0x1658C0, GetStringFromIndex = 0x123F80, GetStringLiteralFromIndex = 0x124120 },
-            ["genshin-impact-2.3"]         = new UnityOffsets { DecryptMetadata = 0x1673A0, GetStringFromIndex = 0x125220, GetStringLiteralFromIndex = 0x125530 },
-            ["genshin-impact-2.4"]         = new UnityOffsets { DecryptMetadata = 0x16F840, GetStringFromIndex = 0x12DC50, GetStringLiteralFromIndex = 0x12DF60 },
-            ["genshin-impact-2.4.50"]      = new UnityOffsets { DecryptMetadata = 0x1C58A0, GetStringFromIndex = 0x14C9B0, GetStringLiteralFromIndex = 0x14CD70 },
-            ["genshin-impact-2.5"]         = new UnityOffsets { DecryptMetadata = 0x1C4DF0, GetStringFromIndex = 0x14C2D0, GetStringLiteralFromIndex = 0x14C6C0 },
-            ["genshin-impact-2.5.50"]      = new UnityOffsets { DecryptMetadata = 0x1D8630, GetStringFromIndex = 0x15EFC0, GetStringLiteralFromIndex = 0x15F390 },
-            ["genshin-impact-2.5.52"]      = new UnityOffsets { DecryptMetadata = 0x175070, GetStringFromIndex = 0x132B00, GetStringLiteralFromIndex = 0x132DF0 },
-            ["genshin-impact-2.6"]         = new UnityOffsets { DecryptMetadata = 0x175060, GetStringFromIndex = 0x132B10, GetStringLiteralFromIndex = 0x132E00 },
-            ["genshin-impact-2.6.50"]      = new UnityOffsets { DecryptMetadata = 0x174800, GetStringFromIndex = 0x132E90, GetStringLiteralFromIndex = 0x133140 },
-            ["genshin-impact-2.6.51"]      = new UnityOffsets { DecryptMetadata = 0x179FC0, GetStringFromIndex = 0x137EF0, GetStringLiteralFromIndex = 0x1381D0 },
-            ["genshin-impact-2.6.52"]      = new UnityOffsets { DecryptMetadata = 0x179E80, GetStringFromIndex = 0x137F70, GetStringLiteralFromIndex = 0x138250 },
-            ["genshin-impact-2.6.53"]      = new UnityOffsets { DecryptMetadata = 0x179E60, GetStringFromIndex = 0x137F80, GetStringLiteralFromIndex = 0x138260 },
-            ["genshin-impact-2.6.54"]      = new UnityOffsets { DecryptMetadata = 0x179E60, GetStringFromIndex = 0x137F80, GetStringLiteralFromIndex = 0x138260 },
-            ["genshin-impact-2.7"]         = new UnityOffsets { DecryptMetadata = 0x179E80, GetStringFromIndex = 0x137F60, GetStringLiteralFromIndex = 0x138240 },
-            ["genshin-impact-2.7.50"]      = new UnityOffsets { DecryptMetadata = 0x17A780, GetStringFromIndex = 0x1385B0, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.7.51"]      = new UnityOffsets { DecryptMetadata = 0x17A710, GetStringFromIndex = 0x1385F0, GetStringLiteralFromIndex = 0x138910 },
-            ["genshin-impact-2.7.52"]      = new UnityOffsets { DecryptMetadata = 0x17AE80, GetStringFromIndex = 0x138530, GetStringLiteralFromIndex = 0x138870 },
-            ["genshin-impact-2.7.53"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.7.54"]      = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.8"]         = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
-            ["genshin-impact-2.8.50"]      = new UnityOffsets { DecryptMetadata = 0x1783F0, GetStringFromIndex = 0x136500, GetStringLiteralFromIndex = 0x136840 },
-            ["genshin-impact-2.8.51"]      = new UnityOffsets { DecryptMetadata = 0x179320, GetStringFromIndex = 0x137210, GetStringLiteralFromIndex = 0x137510 },
-            ["genshin-impact-2.8.52"]      = new UnityOffsets { DecryptMetadata = 0x1791C0, GetStringFromIndex = 0x136FB0, GetStringLiteralFromIndex = 0x1372B0 }
+        private Dictionary<string, UnityOffsets> Offsets = new Dictionary<string, UnityOffsets>
+        {
+            ["honkai-impact-3.8"] = new UnityOffsets { DecryptMetadata = 0x02B2A0, GetStringFromIndex = 0x031B00, GetStringLiteralFromIndex = 0x0353A0 },
+            ["honkai-impact-4"] = new UnityOffsets { DecryptMetadata = 0x042110, GetStringFromIndex = 0x029660, GetStringLiteralFromIndex = 0x02CFA0 },
+            ["honkai-impact-5.8"] = new UnityOffsets { DecryptMetadata = 0x0C9C10, GetStringFromIndex = 0xC7FBF0, GetStringLiteralFromIndex = 0xC7FC00 },
+            ["genshin-impact-1.1"] = new UnityOffsets { DecryptMetadata = 0x1A7010, GetStringFromIndex = 0x12ECA0, GetStringLiteralFromIndex = 0x12EEE0 },
+            ["genshin-impact-1.2"] = new UnityOffsets { DecryptMetadata = 0x1A7B60, GetStringFromIndex = 0x12F620, GetStringLiteralFromIndex = 0x12F860 },
+            ["genshin-impact-2.0"] = new UnityOffsets { DecryptMetadata = 0x1A5550, GetStringFromIndex = 0x12C8B0, GetStringLiteralFromIndex = 0x12CAF0 },
+            ["genshin-impact-2.1"] = new UnityOffsets { DecryptMetadata = 0x1A3EE0, GetStringFromIndex = 0x12BED0, GetStringLiteralFromIndex = 0x12C130 },
+            ["genshin-impact-2.2"] = new UnityOffsets { DecryptMetadata = 0x1658C0, GetStringFromIndex = 0x123F80, GetStringLiteralFromIndex = 0x124120 },
+            ["genshin-impact-2.3"] = new UnityOffsets { DecryptMetadata = 0x1673A0, GetStringFromIndex = 0x125220, GetStringLiteralFromIndex = 0x125530 },
+            ["genshin-impact-2.4"] = new UnityOffsets { DecryptMetadata = 0x16F840, GetStringFromIndex = 0x12DC50, GetStringLiteralFromIndex = 0x12DF60 },
+            ["genshin-impact-2.4.50"] = new UnityOffsets { DecryptMetadata = 0x1C58A0, GetStringFromIndex = 0x14C9B0, GetStringLiteralFromIndex = 0x14CD70 },
+            ["genshin-impact-2.5"] = new UnityOffsets { DecryptMetadata = 0x1C4DF0, GetStringFromIndex = 0x14C2D0, GetStringLiteralFromIndex = 0x14C6C0 },
+            ["genshin-impact-2.5.50"] = new UnityOffsets { DecryptMetadata = 0x1D8630, GetStringFromIndex = 0x15EFC0, GetStringLiteralFromIndex = 0x15F390 },
+            ["genshin-impact-2.5.52"] = new UnityOffsets { DecryptMetadata = 0x175070, GetStringFromIndex = 0x132B00, GetStringLiteralFromIndex = 0x132DF0 },
+            ["genshin-impact-2.6"] = new UnityOffsets { DecryptMetadata = 0x175060, GetStringFromIndex = 0x132B10, GetStringLiteralFromIndex = 0x132E00 },
+            ["genshin-impact-2.6.50"] = new UnityOffsets { DecryptMetadata = 0x174800, GetStringFromIndex = 0x132E90, GetStringLiteralFromIndex = 0x133140 },
+            ["genshin-impact-2.6.51"] = new UnityOffsets { DecryptMetadata = 0x179FC0, GetStringFromIndex = 0x137EF0, GetStringLiteralFromIndex = 0x1381D0 },
+            ["genshin-impact-2.6.52"] = new UnityOffsets { DecryptMetadata = 0x179E80, GetStringFromIndex = 0x137F70, GetStringLiteralFromIndex = 0x138250 },
+            ["genshin-impact-2.6.53"] = new UnityOffsets { DecryptMetadata = 0x179E60, GetStringFromIndex = 0x137F80, GetStringLiteralFromIndex = 0x138260 },
+            ["genshin-impact-2.6.54"] = new UnityOffsets { DecryptMetadata = 0x179E60, GetStringFromIndex = 0x137F80, GetStringLiteralFromIndex = 0x138260 },
+            ["genshin-impact-2.7"] = new UnityOffsets { DecryptMetadata = 0x179E80, GetStringFromIndex = 0x137F60, GetStringLiteralFromIndex = 0x138240 },
+            ["genshin-impact-2.7.50"] = new UnityOffsets { DecryptMetadata = 0x17A780, GetStringFromIndex = 0x1385B0, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.7.51"] = new UnityOffsets { DecryptMetadata = 0x17A710, GetStringFromIndex = 0x1385F0, GetStringLiteralFromIndex = 0x138910 },
+            ["genshin-impact-2.7.52"] = new UnityOffsets { DecryptMetadata = 0x17AE80, GetStringFromIndex = 0x138530, GetStringLiteralFromIndex = 0x138870 },
+            ["genshin-impact-2.7.53"] = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.7.54"] = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.8"] = new UnityOffsets { DecryptMetadata = 0x17AF50, GetStringFromIndex = 0x138570, GetStringLiteralFromIndex = 0x1388B0 },
+            ["genshin-impact-2.8.50"] = new UnityOffsets { DecryptMetadata = 0x1783F0, GetStringFromIndex = 0x136500, GetStringLiteralFromIndex = 0x136840 },
+            ["genshin-impact-2.8.51"] = new UnityOffsets { DecryptMetadata = 0x179320, GetStringFromIndex = 0x137210, GetStringLiteralFromIndex = 0x137510 },
+            ["genshin-impact-2.8.52"] = new UnityOffsets { DecryptMetadata = 0x1791C0, GetStringFromIndex = 0x136FB0, GetStringLiteralFromIndex = 0x1372B0 }
             //["star-rail-beta"]             = new UnityOffsets { DecryptMetadata = 0xB597F0, GetStringFromIndex = 0xB59810, GetStringLiteralFromIndex = 0xB59800 }
         };
 
@@ -184,7 +188,8 @@ namespace Loader
 
         // This executes when the client begins to load a new IL2CPP application
         // Place initialization code here
-        public void LoadPipelineStarting(PluginLoadPipelineStartingEventInfo info) {
+        public void LoadPipelineStarting(PluginLoadPipelineStartingEventInfo info)
+        {
 
             // Try to load UnityPlayer.dll
             hModule = LoadLibrary(unityPath.Value);
@@ -198,7 +203,8 @@ namespace Loader
 
         // This executes when the client finishes loading an IL2CPP application
         // Place teardown code here
-        public void LoadPipelineEnding(List<Il2CppInspector.Il2CppInspector> packages, PluginLoadPipelineEndingEventInfo info) {
+        public void LoadPipelineEnding(List<Il2CppInspector.Il2CppInspector> packages, PluginLoadPipelineEndingEventInfo info)
+        {
 
             // Release memory lock on UnityPlayer.dll
             FreeLibrary(hModule);
@@ -207,7 +213,8 @@ namespace Loader
         // This executes as soon as the raw global-metadata.dat has been read from storage,
         // before any attempt is made to analyze its contents
         // We use it to call UnityPlayer.dll to decrypt the file in memory
-        public void PreProcessMetadata(BinaryObjectStream stream, PluginPreProcessMetadataEventInfo info) {
+        public void PreProcessMetadata(BinaryObjectStream stream, PluginPreProcessMetadataEventInfo info)
+        {
 
             // Assume that your plugin is enabled regardless of what is loading
             // Therefore, we don't want to process global-metadata.dat files that are not for us!
@@ -226,28 +233,31 @@ namespace Loader
             PluginServices.For(this).StatusUpdate("Decrypting metadata");
 
             // Create a delegate which internally is a function pointer to the DecryptMetadata function in the DLL
-            var pDecryptMetadata = (DecryptMetadata) Marshal.GetDelegateForFunctionPointer(ModuleBase + Offsets[game.Value].DecryptMetadata, typeof(DecryptMetadata));
+            var pDecryptMetadata = (DecryptMetadata)Marshal.GetDelegateForFunctionPointer(ModuleBase + Offsets[game.Value].DecryptMetadata, typeof(DecryptMetadata));
 
             // Call the delegate with the encrypted metadata byte array and length as arguments
-            var decryptedBytesUnmanaged = pDecryptMetadata(stream.ToArray(), (int) stream.Length);
+            var decryptedBytesUnmanaged = pDecryptMetadata(stream.ToArray(), (int)stream.Length);
 
             // Copy the decrypted data back from unmanaged memory to a byte array
             metadataBlob = new byte[stream.Length];
-            Marshal.Copy(decryptedBytesUnmanaged, metadataBlob, 0, (int) stream.Length);
+            Marshal.Copy(decryptedBytesUnmanaged, metadataBlob, 0, (int)stream.Length);
 
             // Genshin Impact adds some spice by encrypting 0x10 bytes for every 'step' bytes of the metadata
             // with a simple XOR key, so we need to apply that too
-            if (game.Value.StartsWith("genshin-impact") || game.Value.StartsWith("star-rail")) {
-                var key = new byte [] { 0xAD, 0x2F, 0x42, 0x30, 0x67, 0x04, 0xB0, 0x9C, 0x9D, 0x2A, 0xC0, 0xBA, 0x0E, 0xBF, 0xA5, 0x68 };
+            if (game.Value.StartsWith("genshin-impact") || game.Value.StartsWith("star-rail"))
+            {
+                var key = new byte[] { 0xAD, 0x2F, 0x42, 0x30, 0x67, 0x04, 0xB0, 0x9C, 0x9D, 0x2A, 0xC0, 0xBA, 0x0E, 0xBF, 0xA5, 0x68 };
 
                 // The step is based on the file size
-                var step = (int) (stream.Length >> 14) << 6;
+                var step = (int)(stream.Length >> 14) << 6;
 
                 for (var pos = 0; pos < metadataBlob.Length; pos += step)
                     for (var b = 0; b < 0x10; b++)
                         metadataBlob[pos + b] ^= key[b];
-            } else if (game.Value.StartsWith("honkai-impact")) {
-                var key = new byte[] { 0x3f, 0x73, 0xa8, 0x5a, 0x08, 0x32, 0x0a, 0x33, 0x3c, 0xfa, 0xa3, 0x4e, 0x8b, 0x0c, 0x77, 0x45 };
+            }
+            else if (game.Value.StartsWith("honkai-impact"))
+            {
+                var key = new byte[] { 0x3F, 0x73, 0xA8, 0x5A, 0x08, 0x32, 0x0A, 0x33, 0x3C, 0xFA, 0x8D, 0x4E, 0x8B, 0x0C, 0x77, 0x45 };
 
                 // The step is based on the file size
                 var step = (int)(stream.Length >> 14) << 6;
@@ -278,7 +288,8 @@ namespace Loader
 
         // This executes just as Il2CppInspector is about to read all of the .NET identifier strings (eg. type names).
         // We can use this to acquire the strings ourselves instead
-        public void GetStrings(Metadata metadata, PluginGetStringsEventInfo data) {
+        public void GetStrings(Metadata metadata, PluginGetStringsEventInfo data)
+        {
 
             // Don't do anything if this isn't for us
             if (!IsOurs)
@@ -355,13 +366,14 @@ namespace Loader
 
         // This executes just as Il2CppInspector is about to read all of the constant literal strings used in the application
         // We can use this to acquire the string literals ourselves instead
-        
+
         // String literals are indexed from 0-n, however we don't currently know the value of n,
         // and we won't be able to calculate it until the application binary has also been processed.
-        
+
         // Instead, we simply tell Il2CppInspector we have handled the string literals but actually do nothing,
         // and defer this task until later
-        public void GetStringLiterals(Metadata metadata, PluginGetStringLiteralsEventInfo data) {
+        public void GetStringLiterals(Metadata metadata, PluginGetStringLiteralsEventInfo data)
+        {
 
             // Don't do anything if this isn't for us
             if (!IsOurs)
@@ -380,7 +392,8 @@ namespace Loader
 
         // Therefore this is a good place to make any final changes to the data that the high level models and output modules will rely on
         // In this case, we are going to acquire all of the string literals that we deferred earlier
-        public void PostProcessPackage(Il2CppInspector.Il2CppInspector package, PluginPostProcessPackageEventInfo data) {
+        public void PostProcessPackage(Il2CppInspector.Il2CppInspector package, PluginPostProcessPackageEventInfo data)
+        {
 
             // Don't do anything if this isn't for us
             if (!IsOurs)
